@@ -11,7 +11,9 @@ module GooglePlaySearch
     def parse
       #app_search_result_list = []
       app = App.new
-      app.name = get_name @doc
+      app.name      = get_name @doc
+      app.developer = get_developer
+      app.icon_url  = get_icon_url @doc
       #@doc.css("li.search-results-item div.snippet").each do |app_content|
       #    app = App.new
       #    app.url = get_url app_content
@@ -37,8 +39,8 @@ module GooglePlaySearch
       url
     end
 
-    def get_logo_url(app_content)
-      app_content.css("div.thumbnail-wrapper a.thumbnail img").first['src']
+    def get_icon_url(app_content)
+      app_content.css("div.doc-banner-icon img").first['src']
     end
 
     def get_name(app_content)
@@ -46,7 +48,7 @@ module GooglePlaySearch
     end
 
     def get_developer(app_content)
-      app_content.css("div.details div.attribution-category span.attribution a").first.content
+      app_content.css("div.doc-banner-title-container a.doc-header-link").first.content
     end
 
     def get_category(app_content)
@@ -57,16 +59,16 @@ module GooglePlaySearch
       app_content.css("div.description").first.content
     end
 
-                def get_app_point(app_content)
-                  point_str = app_content.css("div.ratings").first['title']
-                  unless point_str.empty?
-                    return point_str[/\d+\.?\d?/].to_f
-                  end
-                  return 0
-                end
+    def get_app_point(app_content)
+      point_str = app_content.css("div.ratings").first['title']
+      unless point_str.empty?
+        return point_str[/\d+\.?\d?/].to_f
+      end
+      return 0
+    end
 
-                def get_app_reviews(app_content)
-                  app_content.css("span.snippet-reviews").first.content[1..-2].gsub(',','').to_i
-                end
+    def get_app_reviews(app_content)
+      app_content.css("span.snippet-reviews").first.content[1..-2].gsub(',','').to_i
+    end
   end
 end
