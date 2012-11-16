@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'open3'
 require 'cgi'
 require File.expand_path(File.dirname(__FILE__) + '/app_parser')
+require File.expand_path(File.dirname(__FILE__) + '/app_from_url_parser')
 
 module GooglePlaySearch
 	class Search
