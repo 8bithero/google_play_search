@@ -10,10 +10,13 @@ module GooglePlaySearch
 
     def parse
       #app_search_result_list = []
+      #@doc.css("doc-banner-content-header").each do |app_content|
       app = App.new
-      app.name      = get_name @doc
+      app.name = get_name @doc
       app.developer = get_developer @doc
-      app.icon_url  = get_icon_url @doc
+      app.icon_url = get_icon_url @doc
+
+      app
       #@doc.css("li.search-results-item div.snippet").each do |app_content|
       #    app = App.new
       #    app.url = get_url app_content
