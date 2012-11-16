@@ -6,6 +6,7 @@ module GooglePlaySearch
 
     def initialize(content)
       @doc = Nokogiri::HTML(content)
+      puts @doc
     end
     def parse
       app_search_result_list = []

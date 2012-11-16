@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + '/app_parser')
 
 module GooglePlaySearch
 	class Search
-		attr_accessor :current_page, :keyword
+		attr_accessor :current_page, :keyword, :url
 
 		$GOOGLE_PLAY_STORE_BASE_URL = "https://play.google.com"  
 
