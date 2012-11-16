@@ -12,7 +12,7 @@ module GooglePlaySearch
       #app_search_result_list = []
       app = App.new
       app.name      = get_name @doc
-      app.developer = get_developer
+      app.developer = get_developer @doc
       app.icon_url  = get_icon_url @doc
       #@doc.css("li.search-results-item div.snippet").each do |app_content|
       #    app = App.new
