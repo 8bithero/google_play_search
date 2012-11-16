@@ -9,8 +9,9 @@ module GooglePlaySearch
     end
 
     def parse
-      @doc
       #app_search_result_list = []
+      app = App.new
+      app.name = get_name @doc
       #@doc.css("li.search-results-item div.snippet").each do |app_content|
       #    app = App.new
       #    app.url = get_url app_content
@@ -41,7 +42,7 @@ module GooglePlaySearch
     end
 
     def get_name(app_content)
-      app_content.css("div.details a.title").first.content
+      app_content.css("h1.doc-banner-title").first.content
     end
 
     def get_developer(app_content)
