@@ -6,24 +6,25 @@ module GooglePlaySearch
 
     def initialize(content)
       @doc = Nokogiri::HTML(content)
-      puts @doc
     end
+
     def parse
-      app_search_result_list = []
-      @doc.css("li.search-results-item div.snippet").each do |app_content|
-          app = App.new
-          app.url = get_url app_content
-          app.id = app.url[app.url.index("?id=")+4..-1]
-          app.name = get_name app_content
-          app.developer = get_developer app_content
-          app.category = get_category app_content
-          app.logo_url = get_logo_url app_content
-          app.short_description = get_short_description app_content
-                      app.point = get_app_point app_content
-                      app.reviews = get_app_reviews app_content
-          app_search_result_list << app
-      end
-      app_search_result_list
+      @doc
+      #app_search_result_list = []
+      #@doc.css("li.search-results-item div.snippet").each do |app_content|
+      #    app = App.new
+      #    app.url = get_url app_content
+      #    app.id = app.url[app.url.index("?id=")+4..-1]
+      #    app.name = get_name app_content
+      #    app.developer = get_developer app_content
+      #    app.category = get_category app_content
+      #    app.logo_url = get_logo_url app_content
+      #    app.short_description = get_short_description app_content
+      ##                app.point = get_app_point app_content
+      #                app.reviews = get_app_reviews app_content
+      #    app_search_result_list << app
+      #end
+      #app_search_result_list
     end
 
     private
