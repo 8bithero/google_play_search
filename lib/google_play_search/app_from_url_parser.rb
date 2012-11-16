@@ -48,7 +48,7 @@ module GooglePlaySearch
     end
 
     def get_developer(app_content)
-      app_content.css("div.doc-banner-title-container a.doc-header-link").first.content
+      app_content.css("a.doc-header-link").first.content
     end
 
     def get_category(app_content)
