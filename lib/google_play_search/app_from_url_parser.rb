@@ -17,6 +17,7 @@ module GooglePlaySearch
       app.developer   = get_developer @doc
       app.icon_url    = get_icon_url @doc
       app.description = get_long_description @doc
+      app.rating      = get_app_rating @doc
 
       app
       #@doc.css("li.search-results-item div.snippet").each do |app_content|
@@ -64,10 +65,10 @@ module GooglePlaySearch
       app_content.css("div#doc-original-text").first.content
     end
 
-    def get_app_point(app_content)
-      point_str = app_content.css("div.ratings").first['title']
-      unless point_str.empty?
-        return point_str[/\d+\.?\d?/].to_f
+    def get_app_rating(app_content)
+      rating_str = app_content.css("div.ratings").first['title']
+      unless rating_str.empty?
+        return rating_str[/\d+\.?\d?/].to_f
       end
       return 0
     end
