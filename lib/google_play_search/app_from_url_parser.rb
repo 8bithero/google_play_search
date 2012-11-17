@@ -68,7 +68,7 @@ module GooglePlaySearch
     def get_app_rating(app_content)
       rating_str = app_content.css("div.ratings").first['title']
       unless rating_str.empty?
-        return rating_str[/\d+\.?\d?/].to_d
+        return rating_str[/\d+\.?\d?/].to_f
       end
       return 0
     end
