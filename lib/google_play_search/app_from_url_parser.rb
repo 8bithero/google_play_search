@@ -61,7 +61,7 @@ module GooglePlaySearch
     end
 
     def get_long_description(app_content)
-      app_content.css("div#original-original-text").first#.content
+      app_content.css("div#doc-original-text").first.content
     end
 
     def get_app_point(app_content)
