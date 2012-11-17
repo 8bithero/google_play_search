@@ -12,9 +12,11 @@ module GooglePlaySearch
       #app_search_result_list = []
       #@doc.css("doc-banner-content-header").each do |app_content|
       app = App.new
-      app.name = get_name @doc
-      app.developer = get_developer @doc
-      app.icon_url = get_icon_url @doc
+
+      app.name        = get_name @doc
+      app.developer   = get_developer @doc
+      app.icon_url    = get_icon_url @doc
+      app.description = get_long_description @doc
 
       app
       #@doc.css("li.search-results-item div.snippet").each do |app_content|
@@ -58,8 +60,8 @@ module GooglePlaySearch
       app_content.css("div.details div.attribution-category span.category a").first.content
     end
 
-    def get_short_description(app_content)
-      app_content.css("div.description").first.content
+    def get_long_description(app_content)
+      app_content.css("div#original-original-text").first.content
     end
 
     def get_app_point(app_content)
